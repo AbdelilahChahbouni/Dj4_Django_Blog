@@ -22,7 +22,11 @@ from blog import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/' , views.posts_list),
-    path('blog/<int:post_id>', views.post_detail)
+    path('blog/<int:post_id>', views.post_detail),
+    path('blog/create' , views.create_post),
+    path('blog/<int:post_id>' , views.edit_post),
+    path('blog/<int:post_id>' , views.delete_post),
+    
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
