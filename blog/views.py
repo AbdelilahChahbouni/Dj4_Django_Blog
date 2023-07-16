@@ -28,10 +28,26 @@ def create_post(request):
 
 
 def edit_post(request , post_id):
-    pass
+      data = Post.objects.get(id = post_id) 
+      if request.method == "POST":
+        form = PostForm(request.POST , request.FILES , instance=data)
+        if form.is_valid():
+            my_form=form.save(commit=False)
+            my_form.author = request.user
+            my_form.save()
+            return redirect("/blog")
+      else:
+        form = PostForm(instance=data)
+    
+      return render(request , 'create_post.html' , {"form": form})
+
 
 def delete_post(request , post_id):
-    pass
+    data = Post.objects.get(id = post_id)
+    data.delete()
+    return redirect("/blog")
+
+
 
 
 
