@@ -21,11 +21,11 @@ from django.conf.urls.static import static
 from blog import views 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/' , views.posts_list),
-    path('blog/<int:post_id>', views.post_detail),
-    path('blog/create' , views.create_post),
-    path('blog/<int:post_id>/edite' , views.edit_post),
-    path('blog/<int:post_id>/delete' , views.delete_post),
+    path('blog/' , views.PostList.as_view()),
+    path('blog/<int:pk>', views.PostDetail.as_view()),
+    path('blog/create' , views.CreatePost.as_view()),
+    path('blog/<int:pk>/edite' , views.EditePost.as_view()),
+    path('blog/<int:pk>/delete' , views.DeletePost.as_view()),
     
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
