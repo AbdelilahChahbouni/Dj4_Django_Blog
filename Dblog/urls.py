@@ -22,7 +22,7 @@ from blog import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/' , views.PostList.as_view()),
-    path('blog/<int:pk>', views.PostDetail.as_view()),
+    path('blog/<int:post_id>', views.post_detail),
     path('blog/create' , views.CreatePost.as_view()),
     path('blog/<int:pk>/edite' , views.EditePost.as_view()),
     path('blog/<int:pk>/delete' , views.DeletePost.as_view()),
