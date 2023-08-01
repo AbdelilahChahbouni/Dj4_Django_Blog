@@ -27,6 +27,7 @@ def post_detail(request , post_id):
             myform.user= request.user
             myform.post = data
             myform.save()
+            
     else:
             form = CommentForm()
         
